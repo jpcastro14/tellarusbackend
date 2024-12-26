@@ -24,5 +24,5 @@ class Chamado(Base):
         verbose_name_plural = "Chamados"
 
     def __str__(self):
-        return self.eventtitle
+        return self.eventTitle
 
