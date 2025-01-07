@@ -16,6 +16,7 @@ class Chamado(Base):
     eventSector = models.CharField(max_length=255)
     eventArea = models.CharField(max_length=255)
     eventCriticality = models.IntegerField()
+    eventCriticalityColor = models.CharField(max_length=50)
     eventPriority = models.IntegerField()
     eventDescription = models.CharField(max_length=2000)    
 

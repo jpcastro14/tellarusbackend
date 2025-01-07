@@ -8,5 +8,9 @@ class ChamadoSerializer(serializers.ModelSerializer):
         model = Chamado
         fields = [
             'eventTitle',
-            'eventSector'
+            'eventSector',
+            'eventArea',
+            'eventCriticality',
+            'eventPriority',
+            'eventDescription'
         ]
