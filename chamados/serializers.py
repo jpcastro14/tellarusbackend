@@ -7,6 +7,8 @@ class ChamadoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chamado
         fields = [
+            'active',
+            'created_at',
             'eventTitle',
             'eventSector',
             'eventArea',
