@@ -7,6 +7,7 @@ class ChamadoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chamado
         fields = [
+            'id',
             'created_at',
             'active',
             'eventType',
@@ -15,5 +16,8 @@ class ChamadoSerializer(serializers.ModelSerializer):
             'eventArea',
             'eventCriticality',
             'eventPriority',
-            'eventDescription'
+            'eventDescription',
+            'eventCloseDesc'
         ]
+
+"""  python3 manage.py runserver 172.16.239.177:8000 """

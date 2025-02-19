@@ -20,6 +20,7 @@ class Chamado(Base):
     eventCriticalityColor = models.CharField(blank=True,max_length=50)
     eventPriority = models.IntegerField()
     eventDescription = models.CharField(max_length=2000)    
+    eventCloseDesc = models.CharField(max_length = 2000, blank = True)
 
     class Meta: 
         verbose_name = "Chamado"
