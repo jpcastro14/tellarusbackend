@@ -17,7 +17,9 @@ class ChamadoSerializer(serializers.ModelSerializer):
             'eventCriticality',
             'eventPriority',
             'eventDescription',
-            'eventCloseDesc'
+            'eventCloseDesc',
+            'eventFinalStatus'
+
         ]
 
 """  python3 manage.py runserver 172.16.239.177:8000 """

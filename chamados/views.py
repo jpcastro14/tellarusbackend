@@ -12,3 +12,7 @@ class ChamadosAPIView(generics.ListCreateAPIView):
 class ChamadoAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Chamado.objects.all()
     serializer_class = ChamadoSerializer
+
+class ClosedIssueAPIView(generics.ListAPIView):
+    queryset = Chamado.objects.filter(eventFinalStatus = False)
+    serializer_class = ChamadoSerializer

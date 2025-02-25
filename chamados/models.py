@@ -1,3 +1,4 @@
+from email.policy import default
 from tabnanny import verbose
 from django.db import models
 
@@ -21,7 +22,7 @@ class Chamado(Base):
     eventPriority = models.IntegerField()
     eventDescription = models.CharField(max_length=2000)    
     eventCloseDesc = models.CharField(max_length = 2000, blank = True)
-
+    eventFinalStatus = models.BooleanField(default=False, blank= True)
     class Meta: 
         verbose_name = "Chamado"
         verbose_name_plural = "Chamados"
