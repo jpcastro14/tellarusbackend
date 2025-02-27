@@ -30,3 +30,7 @@ class Chamado(Base):
     def __str__(self):
         return self.eventTitle
 
+class Account(Base):
+    username = models.CharField(max_length = 255)
+    email = models.EmailField(max_length = 60)
+    
