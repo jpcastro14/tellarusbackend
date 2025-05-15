@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status, generics
-from .serializers import ChamadoSerializer
-from .models import Chamado
+from .serializers import ChamadoSerializer, QuestionSerializer
+from .models import Chamado, Question
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 # Create your views here.
@@ -18,6 +18,15 @@ class ChamadoAPIView(generics.RetrieveUpdateDestroyAPIView):
 class ClosedIssueAPIView(generics.ListCreateAPIView):
     queryset = Chamado.objects.filter(active = False)
     serializer_class = ChamadoSerializer
+
+class QuestionsApiView(generics.ListCreateAPIView):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+class QuestionApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
 
 
 @api_view(['POST'])

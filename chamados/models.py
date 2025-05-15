@@ -1,4 +1,4 @@
-from email.policy import default
+
 from tabnanny import verbose
 from django.db import models
 
@@ -33,4 +33,19 @@ class Chamado(Base):
 class Account(Base):
     username = models.CharField(max_length = 255)
     email = models.EmailField(max_length = 60)
+
+class Category (Base):
+    category_id = models.IntegerField(blank= True)
+    category_name = models.CharField(max_length=50)
+    class Meta:
+        verbose_name = "Categoria"
+        verbose_name_plural = "Categorias"
+
+    def __str__(self):
+        return self.category_name
     
+class Question (Base):
+    question_id = models.IntegerField(blank=True)
+    question_body = models.CharField(max_length=255)
+    question_answer = models.CharField(max_length=255)
+    question_category = models.ForeignKey(Category, related_name="Categoria", on_delete=models.CASCADE)
