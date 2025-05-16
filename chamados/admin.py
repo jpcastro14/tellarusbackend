@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Chamado, Question, Category
+from .models import Chamado, Question, Category, Users
 
 # Register your models here.
 
@@ -15,3 +15,7 @@ class QuestionAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display =('category_name','category_id')
+
+@admin.register(Users)
+class UsersAdmin(admin.ModelAdmin):
+    list_display = ('user_name','user_alias')

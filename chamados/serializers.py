@@ -1,7 +1,7 @@
 from dataclasses import field
 from rest_framework import serializers
 
-from .models import Category, Chamado
+from .models import Category, Chamado, Users
 from .models import Question
 
 class ChamadoSerializer(serializers.ModelSerializer):
@@ -31,6 +31,14 @@ class CategorySerializer(serializers.ModelSerializer):
         'category_id',
         'category_name'
     ]
+
+    class Meta:
+        model = Category
+        fields =[
+            'category_id',
+            'category_name'
+        ]
+
 class QuestionSerializer(serializers.ModelSerializer):
 
     question_category = serializers.StringRelatedField(read_only=True)
@@ -43,3 +51,15 @@ class QuestionSerializer(serializers.ModelSerializer):
             'question_answer',
             'question_category'
         ]
+
+class UsersSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Users
+        fields = [
+            'user_name',
+            'user_alias',
+            'user_score'
+        ]
+
+    

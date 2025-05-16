@@ -1,5 +1,4 @@
 
-from tabnanny import verbose
 from django.db import models
 
 # Create your models here.
@@ -49,3 +48,16 @@ class Question (Base):
     question_body = models.CharField(max_length=255)
     question_answer = models.CharField(max_length=255)
     question_category = models.ForeignKey(Category, related_name="Categoria", on_delete=models.CASCADE)
+
+
+class Users (Base):
+    user_name = models.CharField(max_length=50)
+    user_alias = models.CharField(max_length=50)
+    user_score = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name = "Jogador"
+        verbose_name_plural = "Jogadores"
+    
+    def __str__(self):
+        return self.user_name
