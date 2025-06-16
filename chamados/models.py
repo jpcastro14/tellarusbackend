@@ -1,4 +1,6 @@
+from email.policy import default
 from tabnanny import verbose
+from unicodedata import category
 from django.db import models
 
 # Create your models here.
@@ -21,7 +23,7 @@ class Chamado(Base):
     eventPriority = models.IntegerField()
     eventDescription = models.CharField(max_length=2000)    
     eventCloseDesc = models.CharField(max_length = 2000, blank = True)
-
+    eventFinalStatus = models.BooleanField(default=False, blank= True)
     class Meta: 
         verbose_name = "Chamado"
         verbose_name_plural = "Chamados"
@@ -29,3 +31,38 @@ class Chamado(Base):
     def __str__(self):
         return self.eventTitle
 
+class Account(Base):
+    username = models.CharField(max_length = 255)
+    email = models.EmailField(max_length = 60)
+    
+
+class Category(Base):
+    name = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name = "Categoria"
+        verbose_name_plural = "Categorias"
+    
+    def __str__ (self):
+        return self.name
+
+class Answer (Base):
+    
+    answer_choices = [
+        ('correct', 'Correct'),
+        ('wrong', 'wrong')
+    ]
+    answer = models.CharField(max_length=20, choices=answer_choices)
+
+
+class Question (Base):
+    body = models.CharField(max_length= 255)
+    answer = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Questão'
+        verbose_name_plural = "Questões"
+
+    def __str__(self):
+        return self.body
