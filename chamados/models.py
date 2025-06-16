@@ -1,6 +1,4 @@
-from email.policy import default
-from tabnanny import verbose
-from unicodedata import category
+
 from django.db import models
 
 # Create your models here.
@@ -45,14 +43,6 @@ class Category(Base):
     
     def __str__ (self):
         return self.name
-
-class Answer (Base):
-    
-    answer_choices = [
-        ('correct', 'Correct'),
-        ('wrong', 'wrong')
-    ]
-    answer = models.CharField(max_length=20, choices=answer_choices)
 
 
 class Question (Base):
