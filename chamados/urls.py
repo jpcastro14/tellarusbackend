@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ChamadoAPIView, ChamadosAPIView, ClosedIssueAPIView, FilteredQuestionAPIView, QuestionAPIView
+from .views import ChamadoAPIView, ChamadosAPIView, ClosedIssueAPIView, arts_question_list
 
 from . import views
 
@@ -9,8 +9,8 @@ urlpatterns = [
     path('chamados/<int:pk>', ChamadoAPIView.as_view(), name="chamados"),
     path('closed/', ClosedIssueAPIView.as_view(), name="Chamados Fechados"),
     path('login/', views.login ),
-    path('question/', QuestionAPIView.as_view(), name='Todas as questões'),
-    path('question/<str:category__name>/', FilteredQuestionAPIView.as_view(), name='Questões de História')
+    path('question/', views.question_list, name='Todas as questões'),
+    path('question/<str:param>/', views.arts_question_list, name='Questões de História')
 
 
 ]
