@@ -5,7 +5,7 @@ from .models import Chamado, Question
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, get_list_or_404
 # Create your views here.
 
 class ChamadosAPIView(generics.ListCreateAPIView):
@@ -31,8 +31,8 @@ def question_list(request):
 
 @api_view([ 'GET'])
 def arts_question_list(request, param):
-    question = get_object_or_404(Question, category__name=param)
-    serializer = QuestionSerializer(question)
+    question = get_list_or_404(Question, category__name=param)
+    serializer = QuestionSerializer(question, many=True)
     return Response(serializer.data)
 
 
